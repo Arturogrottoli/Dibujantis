@@ -34,7 +34,7 @@ export default function Header() {
       <nav className="container mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center">
         <div className="flex items-center gap-3 mb-4 md:mb-0">
           <Image
-            src="https://public.readdy.ai/ai/img_res/81f57fde67c17b086f42bc9d204bbe28.jpg"
+            src="https://ibb.co/HD4nCkcG"
             alt="Logo"
             width={128}
             height={128}
