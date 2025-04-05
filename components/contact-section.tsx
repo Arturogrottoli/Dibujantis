@@ -121,24 +121,25 @@ export default function ContactSection() {
             <p className="text-xl md:text-2xl text-gray-600 mb-8">Or connect with me on social media</p>
             <div className="mt-8 flex justify-center gap-6 flex-wrap">
               <a
-                href="#"
+                href="https://www.facebook.com/dibujantis"
                 className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 hover:bg-primary/20 transition-colors cursor-pointer"
                 aria-label="Facebook"
               >
                 <i className="ri-facebook-line text-primary"></i>
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/dibujantis/"
                 className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 hover:bg-primary/20 transition-colors cursor-pointer"
                 aria-label="Instagram"
               >
                 <i className="ri-instagram-line text-primary"></i>
               </a>
               <a
-                href="#"
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 hover:bg-primary/20 transition-colors cursor-pointer"
-                aria-label="Email"
-              >
+  href="mailto:antolaser@gmail.com"
+  className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 hover:bg-primary/20 transition-colors cursor-pointer"
+  aria-label="Email"
+>
+
                 <i className="ri-mail-line text-primary"></i>
               </a>
               <a
@@ -149,7 +150,7 @@ export default function ContactSection() {
                 <i className="ri-pencil-line text-primary"></i>
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/dibujantis/"
                 className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 hover:bg-primary/20 transition-colors cursor-pointer"
                 aria-label="LinkedIn"
               >
