@@ -40,38 +40,6 @@ export default function PortfolioSection() {
         </p>
         <h2 className="text-3xl md:text-5xl font-montserrat font-bold mb-12 text-center">Featured Works</h2>
 
-        <div className="flex justify-center mb-8 gap-4 flex-wrap">
-          <button
-            onClick={() => setFilter(null)}
-            className={`px-4 py-2 rounded-full transition-colors ${!filter ? "bg-primary text-white" : "bg-gray-200 hover:bg-gray-300"}`}
-          >
-            All
-          </button>
-          <button
-            onClick={() => setFilter("branding")}
-            className={`px-4 py-2 rounded-full transition-colors ${filter === "branding" ? "bg-primary text-white" : "bg-gray-200 hover:bg-gray-300"}`}
-          >
-            Branding
-          </button>
-          <button
-            onClick={() => setFilter("illustration")}
-            className={`px-4 py-2 rounded-full transition-colors ${filter === "illustration" ? "bg-primary text-white" : "bg-gray-200 hover:bg-gray-300"}`}
-          >
-            Illustration
-          </button>
-          <button
-            onClick={() => setFilter("digital")}
-            className={`px-4 py-2 rounded-full transition-colors ${filter === "digital" ? "bg-primary text-white" : "bg-gray-200 hover:bg-gray-300"}`}
-          >
-            Digital
-          </button>
-          <button
-            onClick={() => setFilter("sports")}
-            className={`px-4 py-2 rounded-full transition-colors ${filter === "sports" ? "bg-primary text-white" : "bg-gray-200 hover:bg-gray-300"}`}
-          >
-            Sports
-          </button>
-        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {sortedItems.map((item) => (
