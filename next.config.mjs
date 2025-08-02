@@ -15,6 +15,14 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'www.dibujantis.com',
+        port: '',
+        pathname: '/IMAGES/**',
+      },
+    ],
   },
   experimental: {
     webpackBuildWorker: true,

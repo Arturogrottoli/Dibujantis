@@ -17,10 +17,14 @@ type ProjectModalProps = {
 
 export default function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [imageError, setImageError] = useState(false)
 
   // Reset current image index when project changes
   useEffect(() => {
     setCurrentImageIndex(0)
+    setImageError(false)
+    console.log("Modal opened with project:", project?.title)
+    console.log("Images array:", project?.images)
   }, [project])
 
   // Close modal on escape key
@@ -50,10 +54,22 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % project.images.length)
+    console.log("Next image, new index:", (currentImageIndex + 1) % project.images.length)
   }
 
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev - 1 + project.images.length) % project.images.length)
+    console.log("Prev image, new index:", (currentImageIndex - 1 + project.images.length) % project.images.length)
+  }
+
+  const handleImageError = () => {
+    console.error("Image failed to load:", project.images[currentImageIndex])
+    setImageError(true)
+  }
+
+  const handleImageLoad = () => {
+    console.log("Image loaded successfully:", project.images[currentImageIndex])
+    setImageError(false)
   }
 
   return (
@@ -74,6 +90,9 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{project.title}</h2>
           <p className="text-gray-600">{project.description}</p>
           {project.copyright && <p className="text-sm text-gray-500 mt-1">COPYRIGHT: {project.copyright}</p>}
+          <p className="text-xs text-gray-400 mt-1">
+            Image {currentImageIndex + 1} of {project.images.length}: {project.images[currentImageIndex]}
+          </p>
         </div>
 
         <div className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden">
@@ -82,7 +101,16 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
             alt={`${project.title} - Image ${currentImageIndex + 1}`}
             fill
             className="object-contain"
+            onError={handleImageError}
+            onLoad={handleImageLoad}
+            unoptimized
           />
+
+          {imageError && (
+            <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
+              <p className="text-gray-500">Error loading image</p>
+            </div>
+          )}
 
           {project.images.length > 1 && (
             <>
@@ -106,7 +134,7 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
 
         {project.images.length > 1 && (
           <div className="flex justify-center mt-4 gap-2">
-            {project.images.map((_, index) => (
+            {project.images.map((image, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentImageIndex(index)}
