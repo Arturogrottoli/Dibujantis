@@ -28,8 +28,14 @@ const nextConfig = {
         port: '',
         pathname: '/IMAGES/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+        port: '',
+        pathname: '/**',
+      },
     ],
-    domains: ['www.dibujantis.com'],
+    domains: ['www.dibujantis.com', 'picsum.photos'],
   },
   experimental: {
     webpackBuildWorker: true,
