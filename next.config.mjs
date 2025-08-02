@@ -22,7 +22,14 @@ const nextConfig = {
         port: '',
         pathname: '/IMAGES/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.dibujantis.com',
+        port: '',
+        pathname: '/IMAGES/**',
+      },
     ],
+    domains: ['www.dibujantis.com'],
   },
   experimental: {
     webpackBuildWorker: true,
