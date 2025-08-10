@@ -34,8 +34,14 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.postimg.cc',
+        port: '',
+        pathname: '/**',
+      },
     ],
-    domains: ['www.dibujantis.com', 'picsum.photos'],
+    domains: ['www.dibujantis.com', 'picsum.photos', 'i.postimg.cc'],
   },
   experimental: {
     webpackBuildWorker: true,
