@@ -6,7 +6,7 @@ export default function AboutSection() {
       <div className="container mx-auto flex flex-col md:flex-row items-center gap-12">
         <div className="w-full md:w-1/4">
           <Image
-            src="https://public.readdy.ai/ai/img_res/9504bc7a9085e3bd864a7dd577f5f0d0.jpg"
+            src="https://i.postimg.cc/BZdSpjhs/perfil.png"
             alt="Designer Profile"
             width={400}
             height={600}
@@ -16,33 +16,21 @@ export default function AboutSection() {
         <div className="w-full md:w-3/4">
           <h2 className="text-3xl md:text-5xl font-montserrat font-bold mb-8">About Me</h2>
           <p className="text-lg text-gray-600 mb-6">
-            With over 8 years of experience in digital design and illustration, I've had the privilege of working with
-            clients across various industries, from tech startups to established publishing houses.
+            Hello, I'm Antonela Carpena (dibujantis™)
+I'm an Argentinian illustrator and graphic designer with over 20 years of experience collaborating with clients from around the world.
           </p>
           <p className="text-lg text-gray-600 mb-8">
-            My approach combines traditional artistic techniques with modern digital tools, creating unique visual
-            experiences that tell compelling stories and engage audiences.
+           I studied Graphic Design at the University of Buenos Aires. Throughout my career, I’ve taken part in various courses and workshops to continue developing my skills and stay current in the field. I also taught illustration for several years.
           </p>
           <p className="text-lg text-gray-600 mb-8">
-            I specialize in creating immersive visual experiences that bridge the gap between traditional artistry and
-            digital innovation. My work spans across various mediums - from detailed digital illustrations and brand
-            identity design to UI/UX solutions and art direction. I believe in the power of visual storytelling to
-            create meaningful connections and leave lasting impressions. Whether working on intricate character designs,
-            developing comprehensive brand identities, or crafting user-centered digital experiences, I bring a
-            thoughtful and strategic approach to every project.
+           My work includes logo design, patterns, icon sets, advertising and communication pieces, illustration for various purposes and editorial design. I focus on creating visual solutions that are impactful and unique.
           </p>
-          <div className="flex gap-4">
-            <Image
-              src="https://public.readdy.ai/ai/img_res/7ff94de41ba776b3d0aea8f0276f1a77.jpg"
-              alt="Software Skills"
-              width={200}
-              height={48}
-              className="h-12 w-auto"
-            />
-          </div>
+          <p className="text-lg text-gray-600 mb-8">
+         My style is dynamic, with bold colors and strong lines. I offer personalized design packages and adapt my approach to suit each brand’s identity and goals. </p>
+          <p className="text-lg text-gray-600 mb-8">
+        Contact me, let’s work together! I'd love to help bring your ideas to life.  </p>
         </div>
       </div>
     </section>
   )
 }
-
