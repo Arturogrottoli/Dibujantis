@@ -73,8 +73,7 @@ export default function ProjectPage() {
                 <Image
                   src={image || "/placeholder.svg"}
                   alt={`${project.title} - Image ${index + 1}`}
-                  width={300}
-                   height={300}
+                  fill
                   className="object-cover"
                 />
               </div>
