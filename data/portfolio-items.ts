@@ -23,21 +23,21 @@ export const generateAdditionalImages = (mainImage: string): string[] => {
 
 
 export const portfolioItems: PortfolioItem[] = [
- {
-  id: 1,
-  title: "BUBBA BEAR",
-  description: "Branding design for pet care products",
-  image: "https://i.postimg.cc/7h5SMjsX/BUBBA-1.png",
-  images: [
-    "https://i.postimg.cc/7h5SMjsX/BUBBA-1.png",
-    "https://i.postimg.cc/NGn6ffFn/BUBBA-2.png",
-    "https://i.postimg.cc/SRHCZVH4/BUBBA-3.png",
-  ],
-  category: "branding",
-  copyright: "bubbabear.com",
-  featured: true,
-  type: "modal",
-},
+  {
+    id: 1,
+    title: "BUBBA BEAR",
+    description: "Branding design for pet care products",
+    image: "https://i.imgur.com/7wGx3Er.png",
+    images: [
+      "https://i.imgur.com/7wGx3Er.png",
+      "https://i.imgur.com/Uk5tkUM.png",
+      "https://i.imgur.com/BkleitL.png",
+    ],
+    category: "branding",
+    copyright: "bubbabear.com",
+    featured: true,
+    type: "modal",
+  },
 
   {
     id: 2,
