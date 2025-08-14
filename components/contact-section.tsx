@@ -143,7 +143,7 @@ export default function ContactSection() {
                 <i className="ri-mail-line text-primary"></i>
               </a>
               <a
-                href="#"
+                href="https://www.fiverr.com/dibujantis"
                 className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 hover:bg-primary/20 transition-colors cursor-pointer"
                 aria-label="Dribbble"
               >

@@ -90,9 +90,7 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{project.title}</h2>
           <p className="text-gray-600">{project.description}</p>
           {project.copyright && <p className="text-sm text-gray-500 mt-1">COPYRIGHT: {project.copyright}</p>}
-          <p className="text-xs text-gray-400 mt-1">
-            Image {currentImageIndex + 1} of {project.images.length}: {project.images[currentImageIndex]}
-          </p>
+          
         </div>
 
         <div className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden">

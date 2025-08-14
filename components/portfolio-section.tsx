@@ -59,16 +59,14 @@ export default function PortfolioSection() {
                 <h3 className="text-xl md:text-2xl font-bold mb-2">{item.title}</h3>
                 <p className="text-center mb-4">{item.description}</p>
                 {item.copyright && <p className="text-sm mt-auto">COPYRIGHT: {item.copyright}</p>}
-                <div className="mt-2 text-xs">
-                  {item.type === "modal" ? "Click to view in modal" : "Click to view details page"}
-                </div>
+              
               </div>
             </div>
           ))}
         </div>
 
         <div className="mt-16 text-center text-gray-500">
-          <p>All images and designs © 2025 Dibujantis. All rights reserved.</p>
+          <p>© 2025 Dibujantis. All rights reserved.</p>
         </div>
       </div>
 

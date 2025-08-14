@@ -26,7 +26,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
     title: "BUBBA BEAR",
-    description: "Branding design for pet care products",
+    description: "Branding design for baby products",
     image: "https://i.imgur.com/7wGx3Er.png",
     images: [
       "https://i.imgur.com/7wGx3Er.png",
