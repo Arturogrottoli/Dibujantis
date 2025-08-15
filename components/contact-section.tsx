@@ -4,6 +4,9 @@ import type React from "react"
 
 import { useState } from "react"
 
+// Formspree configuration - Replace with your Formspree endpoint
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xayzabcd" // Replace with your actual Formspree endpoint
+
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
@@ -23,22 +26,41 @@ export default function ContactSection() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitError("")
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitSuccess(true)
-      setFormData({ name: "", email: "", message: "" })
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      })
 
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitSuccess(false)
-      }, 5000)
-    }, 1500)
+      if (response.ok) {
+        setSubmitSuccess(true)
+        setFormData({ name: "", email: "", message: "" })
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setSubmitSuccess(false)
+        }, 5000)
+      } else {
+        setSubmitError('Failed to send message')
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitError('Failed to send message. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
