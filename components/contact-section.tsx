@@ -5,7 +5,7 @@ import type React from "react"
 import { useState } from "react"
 
 // Formspree configuration - Replace with your Formspree endpoint
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xayzabcd" // Replace with your actual Formspree endpoint
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mjkozzzd"
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
