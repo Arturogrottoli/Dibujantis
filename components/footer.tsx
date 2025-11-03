@@ -11,7 +11,8 @@ export default function Footer() {
     e.preventDefault()
     const element = document.getElementById(id)
     if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset
+      const headerHeight = 120 // Height of fixed header
+      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - headerHeight
       window.scrollTo({
         top: offsetTop,
         behavior: "smooth",
@@ -46,13 +47,16 @@ export default function Footer() {
             Contact
           </a>
         </div>
-        <button
-          onClick={scrollToTop}
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 hover:bg-primary/20 transition-colors cursor-pointer"
-          aria-label="Scroll to top"
-        >
-          <i className="ri-arrow-up-line text-primary"></i>
-        </button>
+        <div className="flex items-center gap-4">
+          <p className="text-xs text-gray-400">Website by Arturo Grottoli</p>
+          <button
+            onClick={scrollToTop}
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 hover:bg-primary/20 transition-colors cursor-pointer"
+            aria-label="Scroll to top"
+          >
+            <i className="ri-arrow-up-line text-primary"></i>
+          </button>
+        </div>
       </div>
     </footer>
   )

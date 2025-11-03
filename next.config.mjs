@@ -40,8 +40,14 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.imgur.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
-    domains: ['www.dibujantis.com', 'picsum.photos', 'i.postimg.cc'],
+    domains: ['www.dibujantis.com', 'picsum.photos', 'i.postimg.cc', 'i.imgur.com'],
   },
   experimental: {
     webpackBuildWorker: true,

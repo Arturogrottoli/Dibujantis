@@ -21,7 +21,8 @@ export default function Header() {
     e.preventDefault()
     const element = document.getElementById(id)
     if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset
+      const headerHeight = 120 // Height of fixed header
+      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - headerHeight
       window.scrollTo({
         top: offsetTop,
         behavior: "smooth",

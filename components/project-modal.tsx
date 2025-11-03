@@ -18,14 +18,36 @@ type ProjectModalProps = {
 export default function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [imageError, setImageError] = useState(false)
+  const [imageLoading, setImageLoading] = useState(true)
 
   // Reset current image index when project changes
   useEffect(() => {
     setCurrentImageIndex(0)
     setImageError(false)
+    setImageLoading(true)
     console.log("Modal opened with project:", project?.title)
     console.log("Images array:", project?.images)
   }, [project])
+
+  // Preload next and previous images
+  useEffect(() => {
+    if (!project || !isOpen) return
+
+    const imagesToPreload = [
+      project.images[(currentImageIndex + 1) % project.images.length],
+      project.images[(currentImageIndex - 1 + project.images.length) % project.images.length],
+    ]
+
+    imagesToPreload.forEach((src) => {
+      if (src) {
+        const link = document.createElement('link')
+        link.rel = 'preload'
+        link.as = 'image'
+        link.href = src
+        document.head.appendChild(link)
+      }
+    })
+  }, [currentImageIndex, project, isOpen])
 
   // Close modal on escape key
   useEffect(() => {
@@ -53,13 +75,11 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
   if (!isOpen || !project) return null
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % project.images.length)
-    console.log("Next image, new index:", (currentImageIndex + 1) % project.images.length)
+    handleImageChange((currentImageIndex + 1) % project.images.length)
   }
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + project.images.length) % project.images.length)
-    console.log("Prev image, new index:", (currentImageIndex - 1 + project.images.length) % project.images.length)
+    handleImageChange((currentImageIndex - 1 + project.images.length) % project.images.length)
   }
 
   const handleImageError = () => {
@@ -70,12 +90,18 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
   const handleImageLoad = () => {
     console.log("Image loaded successfully:", project.images[currentImageIndex])
     setImageError(false)
+    setImageLoading(false)
+  }
+
+  const handleImageChange = (newIndex: number) => {
+    setImageLoading(true)
+    setCurrentImageIndex(newIndex)
   }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80" onClick={onClose}>
       <div
-        className="relative w-full max-w-4xl p-4 md:p-6 mx-4 bg-white rounded-lg shadow-xl"
+        className="relative w-full max-w-4xl md:max-w-6xl mx-4 bg-white rounded-lg shadow-xl flex flex-col max-h-[90vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -86,22 +112,28 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
           <X size={24} />
         </button>
 
-        <div className="mb-4">
+        <div className="p-4 md:p-6 pb-2 flex-shrink-0">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{project.title}</h2>
           <p className="text-gray-600">{project.description}</p>
           {project.copyright && <p className="text-sm text-gray-500 mt-1">COPYRIGHT: {project.copyright}</p>}
-          
         </div>
 
-        <div className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden">
+        <div className="relative flex-1 bg-gray-100 overflow-hidden min-h-[400px] md:min-h-[500px]">
+          {imageLoading && !imageError && (
+            <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+              <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          )}
           <Image
             src={project.images[currentImageIndex] || "/placeholder.svg"}
             alt={`${project.title} - Image ${currentImageIndex + 1}`}
             fill
-            className="object-contain"
+            className={`object-contain transition-opacity duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
             onError={handleImageError}
             onLoad={handleImageLoad}
-            unoptimized
+            priority={currentImageIndex === 0}
+            loading={currentImageIndex === 0 ? "eager" : "lazy"}
+            sizes="(max-width: 768px) 100vw, 90vw"
           />
 
           {imageError && (
@@ -114,14 +146,14 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
             <>
               <button
                 onClick={prevImage}
-                className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white text-gray-800 transition-colors"
+                className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white text-gray-800 transition-colors md:hidden z-10"
                 aria-label="Previous image"
               >
                 <ChevronLeft size={24} />
               </button>
               <button
                 onClick={nextImage}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white text-gray-800 transition-colors"
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white text-gray-800 transition-colors md:hidden z-10"
                 aria-label="Next image"
               >
                 <ChevronRight size={24} />
@@ -131,11 +163,11 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
         </div>
 
         {project.images.length > 1 && (
-          <div className="flex justify-center mt-4 gap-2">
+          <div className="p-4 flex-shrink-0 flex justify-center gap-2 border-t bg-white">
             {project.images.map((image, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentImageIndex(index)}
+                onClick={() => handleImageChange(index)}
                 className={`w-3 h-3 rounded-full transition-colors ${
                   currentImageIndex === index ? "bg-primary" : "bg-gray-300"
                 }`}
