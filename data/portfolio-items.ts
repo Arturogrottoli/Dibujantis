@@ -47,7 +47,7 @@ export const portfolioItems: PortfolioItem[] = [
   images: [
     "https://i.imgur.com/hlcPkns.png",
     "https://i.imgur.com/olDb0ui.png",
-    "https://i.imgur.com/t19DZbU.png",
+    "https://i.imgur.com/8KDLopb.jpeg",
   ],
   category: "branding",
   copyright: "bundle.com",
