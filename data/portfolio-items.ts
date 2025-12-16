@@ -99,7 +99,7 @@ export const portfolioItems: PortfolioItem[] = [
   images: [
     "https://i.imgur.com/GOKR2da.png",
     "https://i.imgur.com/2NZoh9I.png",
-    "https://i.imgur.com/PPcE5Rp.png",
+    "https://i.imgur.com/XqYz2iP.png",
     "https://i.imgur.com/JMnNHHE.png",
     "https://i.imgur.com/Twbddv1.png",
     "https://i.imgur.com/QOo86Gh.png",
